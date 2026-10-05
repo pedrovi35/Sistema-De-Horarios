@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+import CalendarSave from "./CalendarSave.jsx";
+import PhoneInput, { formatPhone } from "./PhoneInput.jsx";
+import { API_URL } from "./calendar.js";
 
 function getErrorMessage(error) {
   return error instanceof Error ? error.message : "Ocorreu um erro inesperado.";
@@ -140,16 +141,8 @@ export default function App() {
                 placeholder="Seu nome"
               />
 
-              <label htmlFor="phone">Telefone / WhatsApp</label>
-              <input
-                id="phone"
-                type="tel"
-                value={phone}
-                onChange={(event) => setPhone(event.target.value)}
-                minLength="8"
-                required
-                placeholder="(85) 99999-9999"
-              />
+              <label htmlFor="phone">Telefone / WhatsApp com DDD</label>
+              <PhoneInput value={phone} onChange={setPhone} />
 
               <button className="submit" type="submit" disabled={loading}>
                 {loading ? "Confirmando…" : `Confirmar ${selectedTime}`}
@@ -178,9 +171,10 @@ export default function App() {
                 </div>
                 <div>
                   <dt>Telefone</dt>
-                  <dd>{confirmation.phone}</dd>
+                  <dd>{formatPhone(confirmation.phone)}</dd>
                 </div>
               </dl>
+              <CalendarSave key={confirmation.id} appointment={confirmation} />
             </div>
           </section>
         )}

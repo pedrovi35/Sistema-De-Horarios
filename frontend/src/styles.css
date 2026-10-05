@@ -102,9 +102,19 @@ fieldset { margin: 28px 0 0; padding: 0; border: 0; }
 .confirmation dt { color: #54756d; font-size: 0.85rem; }
 .confirmation dd { margin: 0; font-weight: 700; }
 
+.calendar-save { display: flex; align-items: center; gap: 16px; margin-top: 20px; padding-top: 18px; border-top: 1px solid #b8ddcf; }
+.calendar-copy { min-width: 0; }
+.calendar-save h2 { margin: 0 0 6px; color: #174b3e; font-size: 0.95rem; line-height: 1.35; }
+.confirmation .calendar-save p { margin: 0; color: #3f6c61; font-size: 0.8rem; line-height: 1.5; }
+.calendar-qr { flex: 0 0 auto; padding: 4px 4px 8px; border: 1px solid #c7e2d7; border-radius: 12px; background: white; text-align: center; }
+.calendar-qr img { display: block; width: 120px; height: 120px; }
+.calendar-qr > span { display: block; color: #13735d; font-size: 0.6rem; font-weight: 800; }
+.qr-placeholder { display: grid; place-items: center; width: 120px; height: 120px; color: #13735d; font-size: 0.75rem; }
+
 footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid #e4ece9; color: #74847f; font-size: 0.85rem; text-align: center; }
 
 @media (max-width: 520px) {
   .time-grid { grid-template-columns: repeat(2, 1fr); }
   .confirmation dl div { grid-template-columns: 1fr; gap: 2px; }
+  .calendar-save { flex-direction: column; align-items: flex-start; gap: 12px; }
 }
